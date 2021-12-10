@@ -1,0 +1,18 @@
+Package: kin697u
+Type: Package
+Title: Calcualtes bio-mechanicky things
+Version: 0.1.0
+Author: Brent Scott
+Maintainer: Brent Scott <bdscott@umass.edu>
+Description: This package was created for use for my class final for KIN 697u at UMass Amherst.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Depends: 
+    tidyverse
+Imports: 
+    here,
+    cowplot,
+    magrittr,
+    RColorBrewer,
+    ggpubr
