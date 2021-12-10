@@ -16,3 +16,4 @@ Imports:
     magrittr,
     RColorBrewer,
     ggpubr
+RoxygenNote: 7.1.2

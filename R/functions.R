@@ -6,7 +6,8 @@
 #' @return
 #' @export
 #'
-#' @import magrittr dplyr purrr
+#' @import dplyr purrr
+#' @importFrom magrittr "%<>%"
 calc_d_balance <- function(runner_data,
                            race_data,
                            runner_col_names = FALSE,
