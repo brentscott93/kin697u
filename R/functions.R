@@ -1,6 +1,25 @@
+#' Calculate Critical Speed and D'
+#'
+#' @param pr_data a dataframe containing PR performances. The df needs 3 columns.
+#' Columns must be named "athlete", "distance_meters", and "seconds".
+#' Need to convert time to seconds
+#'
+#' @return a nested dataframe
+#' @export
+
+calc_critical_speed <- function(pr_data){
+ pr_data %>%
+  group_by(athlete) %>%
+  nest(pr_data = !athlete) %>%
+  mutate(cs_mod = map(pr_data, ~lm(distance_meters ~ seconds, data = .x)),
+         d_prime_meters = map_dbl(cs_mod, ~coef(.x)[[1]]),
+         critical_speed_meters_second =  map_dbl(cs_mod, ~coef(.x)[[2]]))
+}
+
+
 #' Calculate D' Balance for runner in race
 #'
-#' @param runner_data a datafra,e containing runners critical speed and D' prime values.
+#' @param runner_data a dataframe containing runners critical speed and D' prime values.
 #' @param race_data  a dataframe containing details of the race to simulate where each row represents a lap split. Needs lap speed & lap distance columns.
 #'
 #' @return
